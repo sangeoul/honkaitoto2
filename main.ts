@@ -11,6 +11,7 @@ const MOBIUS=10;
 const GRISEO=11;
 const HUA=12;
 const PARDO=13;
+const MEI=14;
 
 var WRITELOG=false;
 
@@ -21,8 +22,8 @@ if(SIMULATING_NUMBER==1){
 }
 
 
-const PLAYER1=KOSMA;
-const PLAYER2=APONIA;
+//const PLAYER1=KOSMA;
+//const PLAYER2=APONIA;
 
 
 
@@ -184,6 +185,10 @@ class Hero {
 
             let rd=0;
 
+            if(this.name=="침식의 율자"){
+                logging_("침식의 율자의 능력에 의해 영웅의 공격은 소멸했다.");
+                return;
+            }
 
             if(dmg_.damage==0 && dmg_.debuff.isClean()){
                 return 0;
@@ -1515,6 +1520,90 @@ class Hero {
 
                 } // end of action
 
+            }
+            case MEI:{
+                this.name="침식의 율자";
+
+
+                this.hp_o=100;
+                this.atk_o=200;
+                this.def_o=50;
+                this.spd_o=1;
+
+                this.hp=this.hp_o;
+                this.atk=this.atk_o;
+                this.def=this.def_o;
+                this.spd=this.spd_o;
+
+
+                this.action=function( turn:number){
+                    
+                    let dmg_;
+                    
+                    this.logDebuff();
+
+                    if(this.debuff.duration[DEBUFF_RUPT]>0){
+                        this.hp-=4;
+                        logging_("파열에 의해 4 데미지");
+                        if(this.hp<=0){
+                            this.hp=0;
+                            return;
+                        }
+                    }
+                    //디버프 판정//
+                    /*if(this.debuff.duration[DEBUFF_DISC]||this.debuff.duration[DEBUFF_HAZY]){ //봉인,혼미
+
+                        dmg_=new Damage(0);
+                    }   
+                    else if(this.debuff.duration[DEBUFF_SILE]){ //침묵
+                        dmg_=new Damage(this.atk);
+                        if(this.debuff.duration[DEBUFF_CONF]){
+
+                            logging_(this.name+"는 혼란으로 스스로 데미지를 입었다.");
+                            this.hit(dmg_);
+                            this.debuff.duration[DEBUFF_CONF]--;
+                        }
+                        else{this.attack(dmg_);}
+                    }
+                    */
+
+                    
+                    //스킬 판정//
+
+                    {
+
+
+                        //일반 공격
+                        {
+                            dmg_=new Damage(this.atk);
+
+                            //혼란
+                            if(this.debuff.duration[DEBUFF_CONF]){
+
+                                logging_(this.name+"는 혼란으로 스스로 데미지를 입었다.");
+                                dmg_=new Damage(this.atk);
+                                this.hit(dmg_);
+                                this.debuff.duration[DEBUFF_CONF]--;
+                            }
+                            //일반 공격.
+                            else{     
+
+                                logging_("침식의 율자의 소멸 공격");
+                                dmg_=new Damage(this.atk);
+                                this.attack(dmg_);
+                            }
+                        }
+
+
+                    }
+                    
+                    this.countdownDebuff();
+
+
+                } // end of action
+
+
+                break;
             }
          }//end of switch
     }
