@@ -187,7 +187,7 @@ class Hero {
 
             if(this.name=="침식의 율자"){
                 logging_("침식의 율자의 능력에 의해 영웅의 공격은 소멸했다.");
-                return;
+                return 0;
             }
 
             if(dmg_.damage==0 && dmg_.debuff.isClean()){
