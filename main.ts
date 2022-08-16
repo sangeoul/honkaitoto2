@@ -1505,7 +1505,6 @@ class Hero {
 
                                 logging_(this.name+"의 깡통 소환(30 공격)");
                                 this.attack(new Damage(30));
-                                
     
                             }
                         }
@@ -1519,8 +1518,9 @@ class Hero {
                     this.countdownDebuff();
 
                 } // end of action
-
+                break;
             }
+            
             case MEI:{
                 this.name="침식의 율자";
 
@@ -1577,16 +1577,9 @@ class Hero {
                         {
                             dmg_=new Damage(this.atk);
 
-                            //혼란
-                            if(this.debuff.duration[DEBUFF_CONF]){
 
-                                logging_(this.name+"는 혼란으로 스스로 데미지를 입었다.");
-                                dmg_=new Damage(this.atk);
-                                this.hit(dmg_);
-                                this.debuff.duration[DEBUFF_CONF]--;
-                            }
                             //일반 공격.
-                            else{     
+                            {     
 
                                 logging_("침식의 율자의 소멸 공격");
                                 dmg_=new Damage(this.atk);

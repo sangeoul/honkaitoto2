@@ -1,0 +1,64 @@
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        select{
+            width:300px;
+            height:50px;
+            font-size:40px;
+        }
+        input{
+            width:300px;
+            height:45px;
+            font-size:30px;
+        }
+
+        div.titlediv{
+            font-size:60px;
+        }
+
+    </style>
+
+</head>
+<div class="titlediv">붕토토 시뮬레이터</div>
+<div style="margin-top:200px; font-size:30px;">
+    <form type="get" action="./result.php" target="_blank">
+    <select name="player1">
+        <option value="1">Kevin</option>
+        <option value="2">Elysia</option>
+        <option value="3">Aponia</option>
+        <option value="4">Eden</option>
+        <option value="5">Vill-V</option>
+        <option value="6">Kalpas</option>
+        <option value="8">Sakura</option>
+        <option value="9">Kosma</option>
+        <option value="10">Mobius</option>
+        <option value="11">Griseo</option>
+        <option value="12">Hua</option>
+        <option value="13">Pardofelis</option>
+
+    </select>
+    VS
+    <select name="player2">
+        <option value="1">Kevin</option>
+        <option value="2">Elysia</option>
+        <option value="3">Aponia</option>
+        <option value="4">Eden</option>
+        <option value="5">Vill-V</option>
+        <option value="6">Kalpas</option>
+        <option value="8">Sakura</option>
+        <option value="9">Kosma</option>
+        <option value="10">Mobius</option>
+        <option value="11">Griseo</option>
+        <option value="12">Hua</option>
+        <option value="13">Pardofelis</option>
+
+    </select>
+    <br>
+    시뮬레이팅 횟수 (횟수가 1회일 때는 전투로그가 나옵니다.)<br>
+    <input type="number" value="100000" name="simulnum"></input> 회<br><br>
+
+    <input type="submit" value="시뮬레이션 개시">
+    </form>
+</div>
