@@ -1571,7 +1571,7 @@ function whoisWinner():number{
 }
 
 
-function runSimulation(){
+function runSimulation(hero1_,hero2_){
     var wincount=[0,0,0];
 
     writeInfo_();
@@ -1622,7 +1622,7 @@ function runSimulation(){
         }
         wincount[whoisWinner()]++;
     
-        heroes=[new Hero(PLAYER1,0),new Hero(PLAYER2,1)];
+        heroes=[new Hero(hero1_,0),new Hero(hero2_,1)];
     }
     
     if(!WRITELOG){

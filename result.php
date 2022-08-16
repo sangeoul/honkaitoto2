@@ -21,6 +21,6 @@
         WRITELOG=false;
     }
     
-    runSimulation();
+    runSimulation(<? echo $_GET["player1"]?>,<? echo $_GET["player2"]?>);
 
 </script>
