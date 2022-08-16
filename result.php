@@ -12,15 +12,22 @@
 <script type="text/javascript" src="main.js"></script>
 
 <script type="text/javascript">
-    heroes = [new Hero(<? echo $_GET["player1"]?>, 0), new Hero(<? echo $_GET["player2"]?>, 1)];
-    SIMULATING_NUMBER=<? echo $_GET["simulnum"]?>;
-    if(SIMULATING_NUMBER==1){
-        WRITELOG=true;
+    if(<? echo $_GET["player1"]?>==<? echo $_GET["player2"]?>){
+
+        alert("같은 영웅들끼리의 전투는 버그가 발생할 수 있어 중단합니다.");
     }
     else{
-        WRITELOG=false;
+        heroes = [new Hero(<? echo $_GET["player1"]?>, 0), new Hero(<? echo $_GET["player2"]?>, 1)];
+        SIMULATING_NUMBER=<? echo $_GET["simulnum"]?>;
+        if(SIMULATING_NUMBER==1){
+            WRITELOG=true;
+        }
+        else{
+            WRITELOG=false;
+        }
+        
+        runSimulation(<? echo $_GET["player1"]?>,<? echo $_GET["player2"]?>);
     }
-    
-    runSimulation(<? echo $_GET["player1"]?>,<? echo $_GET["player2"]?>);
+
 
 </script>
